@@ -5,24 +5,25 @@ import codecs
 import os
 import sys
 
-tokens = ['ID', 'NUMBER', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
+tokens = ['IDENTIFICADOR', 'NUMBER', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
           'ODD', 'ASSIGN', 'NE', 'LT', 'LTE', 'GT', 'GTE',
           'LPARENT', 'RPARENT', 'COMMA', 'SEMMICOLOM',
           'DOT', 'UPDATE'
 ]
 reservadas = {
-    'begin': 'BEGIN',
-    'end': 'END',
-    'if': 'IF',
-    'then': 'THEN',
-    'while': 'WHILE',
+    'inicio': 'INICIO',
+    'fim': 'FIM',
+    'se': 'SE',
+    'faca': 'FACA',
+    'enquanto': 'ENQUANTO',
     'do': 'DO',
     'call': 'CALL',
     'int': 'INT',
     'procedure': 'PROCEDURE',
     'out': 'OUT',
     'in': 'IN',
-    'else': 'ELSE'
+    'else': 'ELSE',
+    'escreva': 'ESCREVA'
 }
 
 tokens = tokens + list(reservadas.values())
@@ -46,11 +47,12 @@ t_SEMMICOLOM = r';' #ANALIZAR
 t_DOT = r'\.'
 t_UPDATE = r':='
 
-def t_ID(t):
+def t_IDENTIFICADOR(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    if t.value.upper() in reservadas:
-        t.value = t.value.upper()
-        t.type = t.value
+    #if t.value.upper() in reservadas:
+    #    t.value = t.value.upper()
+    #    t.type = t.value
+    t.type = reservadas.get(t.value,'IDENTIFICADOR')
     return t
 
 def t_newline(t):

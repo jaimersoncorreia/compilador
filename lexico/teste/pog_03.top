@@ -1,0 +1,12 @@
+inicio
+	inteiro n;
+	leia(n);
+	int i = 1;
+	int fat = 1;
+	enquanto i < n + 1 faca
+	inicio
+		fat = fat * i;
+		i = i + 1;
+	fim
+	escreva(fat);
+fim

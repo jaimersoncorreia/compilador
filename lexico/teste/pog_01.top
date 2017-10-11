@@ -1,0 +1,8 @@
+inicio 
+	real valor1, valor2, valor3;
+	valor1 = 10.3;
+	valor2 = 20;
+	valor3 = 30;
+	real media = (valor1 + valor2 + valor3)/3;
+	escreva(media);
+fim
